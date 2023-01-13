@@ -40,4 +40,15 @@ public class Enemy : MonoBehaviour
         // 2. 이동하고 싶다.
         transform.position += dir * speed * Time.deltaTime;
     }
+
+    // 다른 물체와 부딪히면 부딪힌녀석 없애고, 나도 죽고싶다
+    // 다른 물체와 부딪히면 호출되는 함수
+    // -> Callback function, event
+    // Enter, Stay, Exit
+    private void OnCollisionEnter(Collision other)
+    {
+        //부딪힌녀석 없애고, 나도 죽고싶다
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
 }
